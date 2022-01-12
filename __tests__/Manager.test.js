@@ -1,5 +1,7 @@
+const Employee = require("../lib/employee");
+
+
 class Manager {
-    // Just like constructor functions, classes can accept arguments
     constructor(area, perimeter) {
       this.area = area;
       this.perimeter = perimeter;
