@@ -1,3 +1,4 @@
+
 class Intern {
     // Just like constructor functions, classes can accept arguments
     constructor(area, perimeter) {
@@ -14,6 +15,6 @@ class Intern {
   const shape = new Shape(25, 25);
   
   shape.printInfo();
-  constructor(area, perimeter) {
+  constructor(area, perimeter)
     this.area = area;
     this.perimeter = perimeter;

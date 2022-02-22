@@ -1,6 +1,5 @@
 const Employee = require("../lib/employee");
 
-
 class Manager {
     constructor(area, perimeter) {
       this.area = area;
@@ -16,6 +15,6 @@ class Manager {
   const shape = new Shape(25, 25);
   
   shape.printInfo();
-  constructor(area, perimeter) {
+  constructor(area, perimeter)
     this.area = area;
     this.perimeter = perimeter;

@@ -36,8 +36,10 @@ function start() {
         },
       ])
       .then((answers) => {
+        console.log(answers);
           const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
           team.push(manager);
+          console.log(team);
           createTeam();
       });
   }
@@ -94,8 +96,10 @@ function start() {
       },
     ])
     .then((answers) => {
+      console.log(answers);
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
         team.push(engineer);
+        console.log(team);
         createTeam();
     });
 
@@ -126,8 +130,10 @@ function start() {
       },
     ])
     .then((answers) => {
+      console.log(answers);
         const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
         team.push(intern);
+        console.log(team);
         createTeam();
     });
 
