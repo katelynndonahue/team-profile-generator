@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+// const generateTeam = require ('./src/template');
 
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");

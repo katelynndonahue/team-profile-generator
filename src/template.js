@@ -1,25 +1,53 @@
-const Employee = require("../lib/employee");
-
 const template = (team) => {
-  const generateEngineer = (engineer) => {};
   const generateManager = (manager) => {
     return `
       <article class="card border-primary mb-3" style="width: 18rem">
       <article class="card-header bg-primary text-white border-success">
-        <h2 class="card-title">${manager.name}</h2>
+        <h2 class="card-title">${manager.getName()}</h2>
         <h3 class="card-text">Manager</h3>
       </article>
       <article class="card-body border-success bg-light">
         <ul class="list-group list-group-flush border">
-          <li class="list-group-item">ID: ${manager.managerId}</li>
-          <li class="list-group-item">Email: <a href="mailto:${manager.managerEmail}">${manager.managerEmail}</a></li>
-          <li class="list-group-item">Office Number: ${manager.managerOfficeNumber} </li>
+          <li class="list-group-item">ID: ${manager.getId()}</li>
+          <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+          <li class="list-group-item">Office Number: ${manager.getOfficeNumber()} </li>
         </ul>
       </article>
   </article>`;
   };
-  const generateIntern = (intern) => {};
-  
+  const generateEngineer = (engineer) => {
+    return `
+      <article class="card border-primary mb-3" style="width: 18rem">
+      <article class="card-header bg-primary text-white border-success">
+        <h2 class="card-title">${engineer.getName()}</h2>
+        <h3 class="card-text">Engineer</h3>
+      </article>
+      <article class="card-body border-success bg-light">
+        <ul class="list-group list-group-flush border">
+          <li class="list-group-item">ID: ${engineer.getId()}</li>
+          <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+          <li class="list-group-item">GitHub: ${engineer.getGitHub()} </li>
+        </ul>
+      </article>
+  </article>`;
+  };
+  const generateIntern = (intern) => {
+    return `
+      <article class="card border-primary mb-3" style="width: 18rem">
+      <article class="card-header bg-primary text-white border-success">
+        <h2 class="card-title">${intern.getName()}</h2>
+        <h3 class="card-text">Intern</h3>
+      </article>
+      <article class="card-body border-success bg-light">
+        <ul class="list-group list-group-flush border">
+          <li class="list-group-item">ID: ${intern.getId()}</li>
+          <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+          <li class="list-group-item">School: ${intern.getSchool()} </li>
+        </ul>
+      </article>
+  </article>`;
+  };
+
   const html = [];
 
   html.push(
@@ -27,8 +55,24 @@ const template = (team) => {
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => generateManager(manager))
   );
+
+  html.push(
+    team
+      .filter((employee) => employee.getRole() === "Engineer")
+      .map((engineer) => generateEngineer(engineer))
+      .join("")
+  );
+
+  html.push(
+    team
+      .filter((employee) => employee.getRole() === "Intern")
+      .map((intern) => generateIntern(intern))
+      .join("")
+  );
+
+  return html.join("")
 };
-const boilerPlate = () => {
+const boilerPlate = (team) => {
   return `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -46,45 +90,24 @@ const boilerPlate = () => {
     </head>
     <body>
       <header>
-        <h1 class="text-center bg-danger text-white" style="padding: 1rem">My Team</h1>
+        <h1 class="text-center bg-danger text-white" style="padding: 1rem">
+          My Team
+        </h1>
       </header>
       <main class="container">
-        <section class="row row-cols-1 row-cols-md-3 g-4 align-middle" style="padding: 1rem">
+        <section
+          class="row row-cols-1 row-cols-md-3 g-4 align-middle"
+          style="padding: 1rem"
+        >
           <section class="col d-flex justify-content-center">
-  ${template(team)}
-</section><section class="col d-flex justify-content-center">
-  <article class="card border-primary mb-3" style="width: 18rem">
-      <article class="card-header bg-primary text-white border-success">
-        <h2 class="card-title">Sam</h2>
-        <h3 class="card-text">Engineer</h3>
-      </article>
-      <article class="card-body border-success bg-light">
-        <ul class="list-group list-group-flush border">
-          <li class="list-group-item">ID: 456</li>
-          <li class="list-group-item">Email: <a href="mailto:sam@email.com">sam@email.com</a></li>
-          <li class="list-group-item">Github: <a href="https://github.com/samdev" target="_blank">samdev</a> </li>
-        </ul>
-      </article>
-  </article>
-</section><section class="col d-flex justify-content-center">
-  <article class="card border-primary mb-3" style="width: 18rem">
-      <article class="card-header bg-primary text-white border-success">
-        <h2 class="card-title">dave</h2>
-        <h3 class="card-text">Intern</h3>
-      </article>
-      <article class="card-body border-success bg-light">
-        <ul class="list-group list-group-flush border">
-          <li class="list-group-item">ID: 03</li>
-          <li class="list-group-item">Email: <a href="mailto:dave@email.com">dave@email.com</a></li>
-          <li class="list-group-item">School: Rutgers </li>
-        </ul>
-      </article>
-  </article>
-</section>
+            ${template(team)}
+          </section>
+          
+          
         </section>
       </main>
     </body>
   </html>`;
 };
 
-module.exports = template;
+module.exports = boilerPlate;
