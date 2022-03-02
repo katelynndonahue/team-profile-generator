@@ -7,7 +7,9 @@ so that I have quick access to their emails and GitHub profiles. I built this we
 I began by creating a repository on GitHub to push and pull my edits and commits to. I then worked in VS Code, using the content that was taught in class this last week. 
 
 ## Usage
-  <iframe src="https://drive.google.com/file/d/1cJDwOz2DrCNoY6MxOawRNgTqr7TnAG0J/preview" width="640" height="480"></iframe>">
+  ```md
+    ![screen shot](./assets/images/teamProfileGenScreenShot.png)
+    ```
 
 ## Credits
 My tutor, Faran Navazi
